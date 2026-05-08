@@ -17,41 +17,70 @@ export default function SectionRenderer({
 }: Props) {
 
   return (
-    <div className="space-y-20">
+
+    <div className="space-y-32">
 
       {sections?.map((section) => (
 
-        <div
+        <section
           key={section.id}
+          id={section.name}
           className="relative"
         >
 
-          {/* TIMELINE DOT */}
-          <div className="absolute -left-[49px] top-6 w-5 h-5 rounded-full bg-orange-500 border-4 border-black" />
+          {/* SECTION HEADER */}
+          <div className="mb-16 text-center">
 
-          {/* SECTION */}
-          <div className="bg-gray-900 border border-gray-800 rounded-3xl p-8">
+           <h2 className="text-4xl md:text-5xl font-black capitalize leading-tight">
 
+  {section.name}
+
+</h2>
+
+          </div>
+
+          {/* SECTION BODY */}
+          <div>
+
+            {/* SKILLS */}
             {section.name === "skills" && (
-              <Skills skills={skills} />
+
+              <div className="bg-white/5 border border-white/10 backdrop-blur-xl rounded-[40px] p-8 md:p-12">
+
+                <Skills skills={skills} />
+
+              </div>
+
             )}
 
+            {/* PROJECTS */}
             {section.name === "projects" && (
+
               <Projects projects={projects} />
+
             )}
 
+            {/* CERTIFICATES */}
             {section.name === "certificates" && (
-              <Certificates
-                certificates={certificates}
-              />
+
+              <div className="bg-white/5 border border-white/10 backdrop-blur-xl rounded-[40px] p-8 md:p-12">
+
+                <Certificates
+                  certificates={certificates}
+                />
+
+              </div>
+
             )}
 
           </div>
 
-        </div>
+        </section>
 
       ))}
 
     </div>
+
   );
+
 }
